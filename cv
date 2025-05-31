@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raahul S Nayar - CS Student & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.2); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.4); }
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .location {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #e3ffe7 0%, #d9e7ff 100%);
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #34495e;
+        }
+
+        .highlight-box {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+        }
+
+        .education-item h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .degree {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .duration {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .gpa {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .language-card {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .language-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .proficiency {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin: 0.3rem 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-info {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+        }
+
+        .email-link {
+            color: #74b9ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: #0984e3;
+            text-shadow: 0 0 10px rgba(116, 185, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .skills-grid,
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Raahul S Nayar</h1>
+                <p class="subtitle">Computer Science Student & Aspiring Developer</p>
+                <p class="location">📍 Bangalore, India</p>
+                <a href="#about" class="cta-button">Discover My Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="fade-in">About Me</h2>
+            <div class="about-content fade-in">
+                <div class="highlight-box">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">Professional Summary</h3>
+                    <p>Motivated and adaptable undergraduate student with a strong foundation in computer science and hands-on experience with modern programming languages and tools.</p>
+                </div>
+                <div class="about-text">
+                    <p>I'm an enthusiastic undergraduate student pursuing <strong>Computer Science with AI & ML</strong> at RV University. Known for being a <strong>quick learner</strong> and <strong>dependable team player</strong>, I bring a natural ability to assist and support others effectively.</p>
+                    <br>
+                    <p>My passion lies in applying technical knowledge and problem-solving abilities in practical environments. I'm particularly interested in opportunities where I can grow while contributing meaningfully as a reliable assistant and continuous learner.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="fade-in">Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>💻 Programming Languages</h3>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">C</div>
+                    <div class="skill-item">SQL</div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>🛠️ Tools & Software</h3>
+                    <div class="skill-item">Microsoft Word</div>
+                    <div class="skill-item">Microsoft Excel</div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>🚀 Soft Skills</h3>
+                    <div class="skill-item">Quick Learner</div>
+                    <div class="skill-item">Team-Oriented</div>
+                    <div class="skill-item">Strong Communication</div>
+                    <div class="skill-item">Self-Starter</div>
+                    <div class="skill-item">Proactive Approach</div>
+                    <div class="skill-item">Online Community Engagement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="fade-in">Educational Journey</h2>
+            <div class="education-timeline">
+                <div class="education-item fade-in">
+                    <h3>RV University</h3>
+                    <div class="degree">BTech (Hons) - Computer Science with AI & ML</div>
+                    <div class="duration">2024 - 2028 | Bangalore, India</div>
+                    <p>Currently pursuing honors degree with specialization in Artificial Intelligence and Machine Learning, building a strong foundation in cutting-edge technologies.</p>
+                </div>
+                <div class="education-item fade-in">
+                    <h3>Harvest International School</h3>
+                    <div class="degree">High School Diploma</div>
+                    <div class="duration">2023 - 2024 | Bengaluru, Karnataka</div>
+                    <span class="gpa">GPA: 79.8%</span>
+                </div>
+                <div class="education-item fade-in">
+                    <h3>Rajagiri Public School</h3>
+                    <div class="degree">High School Education</div>
+                    <div class="duration">2012 - 2023 | Kochi, Kerala</div>
+                    <span class="gpa">GPA: 90.6%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="fade-in">Language Proficiency</h2>
+            <div class="languages-grid">
+                <div class="language-card fade-in">
+                    <h3>🇺🇸 English</h3>
+                    <div class="proficiency"><strong>Read:</strong> High</div>
+                    <div class="proficiency"><strong>Speak:</strong> High</div>
+                    <div class="proficiency"><strong>Write:</strong> High</div>
+                    <p style="margin-top: 1rem; color: #27ae60; font-weight: 600;">Fluent</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>🇮🇳 Hindi</h3>
+                    <div class="proficiency"><strong>Read:</strong> Moderate</div>
+                    <div class="proficiency"><strong>Speak:</strong> Moderate</div>
+                    <div class="proficiency"><strong>Write:</strong> Moderate</div>
+                    <p style="margin-top: 1rem; color: #27ae60; font-weight: 600;">Fluent</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>🇮🇳 Malayalam</h3>
+                    <div class="proficiency"><strong>Read:</strong> Moderate</div>
+                    <div class="proficiency"><strong>Speak:</strong> High</div>
+                    <div class="proficiency"><strong>Write:</strong> Moderate</div>
+                    <p style="margin-top: 1rem; color: #27ae60; font-weight: 600;">Fluent</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>🇫🇷 French</h3>
+                    <div class="proficiency"><strong>Read:</strong> Moderate</div>
+                    <div class="proficiency"><strong>Speak:</strong> Low</div>
+                    <div class="proficiency"><strong>Write:</strong> Moderate</div>
+                    <p style="margin-top: 1rem; color: #f39c12; font-weight: 600;">Basic Proficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact">
+        <div class="container">
+            <h2 class="fade-in">Let's Connect</h2>
+            <div class="contact-info fade-in">
+                <p>Ready to collaborate and contribute to exciting projects</p>
+                <p style="margin-top: 1rem;">
+                    📧 <a href="mailto:raahulsnayar@gmail.com" class="email-link">raahulsnayar@gmail.com</a>
+                </p>
+                <p style="margin-top: 2rem; font-size: 1rem; color: #bdc3c7;">
+                    Always eager to learn, grow, and make meaningful contributions
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
